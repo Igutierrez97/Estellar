@@ -9,6 +9,8 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const depts = await getDepartments();
   return depts.map((d) => ({ id: String(d.departmentId) }));
