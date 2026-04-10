@@ -1,9 +1,7 @@
 import { getObject, getHighlightIDs } from "@/lib/api/met";
 import { notFound } from "next/navigation";
 import { ObjectDetail } from "@/components/object/object-detail";
-import { DetailSkeleton } from "@/components/Detail-Skeleton/DetailSkeleton";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/footer/Footer";
+import { DetailSkeleton } from "@/components/detail-Skeleton/DetailSkeleton";
 import { Suspense } from "react";
 
 // ISR — genera páginas estáticas para los highlights
