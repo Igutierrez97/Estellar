@@ -1,7 +1,7 @@
 
 import { getDepartments } from "@/lib/api/met";
-import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer/Footer";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -12,7 +12,6 @@ export default async function DepartmentsPage() {
 
   return (
     <>
-      <Navbar />
       <main className="pt-[88px] pb-20 px-8">
         <div className="max-w-[1440px] mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12">
@@ -43,7 +42,6 @@ export default async function DepartmentsPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

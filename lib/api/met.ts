@@ -1,11 +1,12 @@
 import { MetObject, Department, MetSearchResponse } from "./types";
 
-const BASE = "https://collectionapi.metmuseum.org/public/collection/v1";
+const BASE_URL_SERVER = process.env.BASE_URL 
+const BASE_URL_CLIENT = process.env.NEXT_PUBLIC_BASE_URL 
 
 /** ISR — Obras destacadas: revalida cada 1 hora */
 export async function getHighlightIDs(): Promise<number[]> {
   const res = await fetch(
-    `${BASE}/search?hasImages=true&isHighlight=true&q=*`,
+    `${BASE_URL_SERVER}/search?hasImages=true&isHighlight=true&q=*`,
     { next: { revalidate: 3600 } }
   );
   const data: MetSearchResponse = await res.json();
@@ -14,7 +15,7 @@ export async function getHighlightIDs(): Promise<number[]> {
 
 /** ISR — Un objeto: revalida cada 7 días (las obras no cambian) */
 export async function getObject(id: number): Promise<MetObject | null> {
-  const res = await fetch(`${BASE}/objects/${id}`, {
+  const res = await fetch(`${BASE_URL_SERVER}/objects/${id}`, {
     next: { revalidate: 604800 },
   });
   if (!res.ok) return null;
@@ -34,7 +35,7 @@ export async function getMultipleObjects(
 
 /** ISR — Departamentos: revalida cada 24 horas */
 export async function getDepartments(): Promise<Department[]> {
-  const res = await fetch(`${BASE}/departments`, {
+  const res = await fetch(`${BASE_URL_SERVER}/departments`, {
     next: { revalidate: 86400 },
   });
   const data = await res.json();
@@ -48,7 +49,7 @@ export async function getObjectsByDepartment(
   limit = 20
 ): Promise<{ total: number; objectIDs: number[] }> {
   const res = await fetch(
-    `${BASE}/objects?departmentIds=${deptId}&hasImages=true`,
+    `${BASE_URL_SERVER}/objects?departmentIds=${deptId}&hasImages=true`,
     { next: { revalidate: 3600 } }
   );
   const data: MetSearchResponse = await res.json();
@@ -63,7 +64,7 @@ export async function searchObjectsClient(
   query: string
 ): Promise<MetSearchResponse> {
   const res = await fetch(
-    `${BASE}/search?hasImages=true&q=${encodeURIComponent(query)}`
+    `${BASE_URL_CLIENT}/search?hasImages=true&q=${encodeURIComponent(query)}`
   );
   return res.json();
 }
@@ -72,7 +73,8 @@ export async function searchObjectsClient(
 export async function getObjectClient(
   id: number
 ): Promise<MetObject | null> {
-  const res = await fetch(`${BASE}/objects/${id}`);
+
+  const res = await fetch(`${BASE_URL_CLIENT}/objects/${id}`);
   if (!res.ok) return null;
   return res.json();
 }
@@ -80,11 +82,10 @@ export async function getObjectClient(
 /** Client — Obra aleatoria (usa el total de objetos con imagen) */
 export async function getRandomObjectID(): Promise<number> {
   const res = await fetch(
-    `${BASE}/search?hasImages=true&q=sun`, // query genérico para tener resultados
+    `${BASE_URL_CLIENT}/search?hasImages=true&q=sun`, // query genérico para tener resultados
     { cache: "no-store" }
   );
   const data: MetSearchResponse = await res.json();
-  console.log(data)
   const randomIndex = Math.floor(Math.random() * Math.min(data.total, 1000));
   return data.objectIDs[randomIndex];
 }

@@ -10,8 +10,8 @@ import { MetObject } from "@/lib/api/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, X, Loader2 } from "lucide-react";
-import { ArtCard } from "@/components/Art-Card/ArtCard";
-import { ArtCardSkeleton } from "@/components/Art-Card/Skeleton";
+import { ArtCard } from "@/components/art-Card/ArtCard";
+import { ArtCardSkeleton } from "@/components/art-Card/Skeleton";
 import { useFavorites } from "@/hooks/use-favorite";
 
 const quickFilters = [

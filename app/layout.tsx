@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
@@ -30,7 +32,11 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}
     >
-      <body className="font-sans min-h-screen bg-background">{children}</body>
+      <body className="font-sans min-h-screen bg-background">
+        <Navbar />
+        {children}
+        <Footer/>
+        </body>
     </html>
   );
 }

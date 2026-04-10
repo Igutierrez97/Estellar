@@ -1,9 +1,9 @@
 "use client";
 
-import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer/Footer";
-import { ArtCard } from "@/components/Art-Card/ArtCard";
-import { ArtCardSkeleton } from "@/components/Art-Card/Skeleton";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
+import { ArtCard } from "@/components/art-Card/ArtCard";
+import { ArtCardSkeleton } from "@/components/art-Card/Skeleton";
 import { useFavorites } from "@/hooks/use-favorite";
 import { Button } from "@/components/ui/button";
 import { Heart, Trash2, ArrowLeft, Loader2 } from "lucide-react";
@@ -18,10 +18,9 @@ export default function FavoritesPage() {
   if (!hydrated) {
     return (
       <>
-        <Navbar />
-        <main className="pt-[88px] pb-20 px-8 min-h-screen">
-          <div className="max-w-[1440px] mx-auto">
-            <div className="h-10 w-56 bg-secondary rounded-lg animate-shimmer bg-[length:200%_100%] mb-10" />
+        <main className="pt-22 pb-20 px-8 min-h-screen">
+          <div className="max-w-360 mx-auto">
+            <div className="h-10 w-56 bg-secondary rounded-lg animate-shimmer  bg-size-[200%_100%] mb-10" />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
               {Array.from({ length: 4 }).map((_, i) => (
                 <ArtCardSkeleton key={i} />
@@ -29,7 +28,6 @@ export default function FavoritesPage() {
             </div>
           </div>
         </main>
-        <Footer />
       </>
     );
   }
@@ -38,7 +36,6 @@ export default function FavoritesPage() {
   if (objects.length === 0 && !loading) {
     return (
       <>
-        <Navbar />
         <main className="pt-[88px] pb-20 px-8 min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md">
             {/* Icono grande decorativo */}
@@ -77,7 +74,6 @@ export default function FavoritesPage() {
             </div>
           </div>
         </main>
-        <Footer />
       </>
     );
   }
@@ -85,7 +81,6 @@ export default function FavoritesPage() {
   // Hidratado, con favoritos
   return (
     <>
-      <Navbar />
       <main className="pt-[88px] pb-20 px-8 min-h-screen">
         <div className="max-w-[1440px] mx-auto">
           {/* Header */}
@@ -155,7 +150,6 @@ export default function FavoritesPage() {
           )}
         </div>
       </main>
-      <Footer />
     </>
   );
 }

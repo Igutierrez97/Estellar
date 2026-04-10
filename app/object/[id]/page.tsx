@@ -2,8 +2,8 @@ import { getObject, getHighlightIDs } from "@/lib/api/met";
 import { notFound } from "next/navigation";
 import { ObjectDetail } from "@/components/object/object-detail";
 import { DetailSkeleton } from "@/components/Detail-Skeleton/DetailSkeleton";
-import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer/Footer";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 import { Suspense } from "react";
 
 // ISR — genera páginas estáticas para los highlights
@@ -40,13 +40,11 @@ export default async function ObjectPage({
   const { id } = await params
   return (
     <>
-      <Navbar />
-      <main className="pt-[88px] pb-20 px-8">
+      <main className="pt-22 pb-20 px-8">
         <Suspense fallback={<DetailSkeleton />}>
           <ObjectDetailWrapper id={Number(id)} />
         </Suspense>
       </main>
-      <Footer />
     </>
   );
 }

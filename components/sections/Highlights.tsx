@@ -1,6 +1,6 @@
 import { getHighlightIDs, getMultipleObjects } from "@/lib/api/met";
-import { ArtCard } from "@/components/Art-Card/ArtCard";
-import { ArtCardSkeleton } from "@/components/Art-Card/Skeleton";
+import { ArtCard } from "@/components/art-Card/ArtCard";
+import { ArtCardSkeleton } from "@/components/art-Card/Skeleton";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 

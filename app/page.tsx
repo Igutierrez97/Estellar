@@ -1,8 +1,8 @@
 /* src/app/page.tsx */
 
 import { Suspense } from "react";
-import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer/Footer";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { StatsBar } from "@/components/sections/Stats-bar";
 import {
@@ -14,8 +14,6 @@ import { SearchSection } from "@/components/sections/Search-section";
 export default function HomePage() {
   return (
     <>
-      <Navbar />
-
       <main>
         {/* ISR — se revalida cada hora */}
         <Hero />
@@ -33,7 +31,7 @@ export default function HomePage() {
         <SearchSection />
       </main>
 
-      <Footer />
+      
     </>
   );
 }

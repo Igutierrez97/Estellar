@@ -1,9 +1,9 @@
 import { getDepartments, getObjectsByDepartment, getMultipleObjects } from "@/lib/api/met";
 import { notFound } from "next/navigation";
-import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer/Footer";
-import { ArtCard } from "@/components/Art-Card/ArtCard";
-import { ArtCardSkeleton } from "@/components/Art-Card/Skeleton";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
+import { ArtCard } from "@/components/art-Card/ArtCard";
+import { ArtCardSkeleton } from "@/components/art-Card/Skeleton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -41,7 +41,6 @@ export default async function DepartmentPage({
 
   return (
     <>
-      <Navbar />
       <main className="pt-[88px] pb-20 px-8">
         <div className="max-w-[1440px] mx-auto">
           <Button
@@ -73,7 +72,6 @@ export default async function DepartmentPage({
           </Suspense>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
